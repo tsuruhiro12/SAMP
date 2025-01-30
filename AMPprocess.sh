@@ -50,34 +50,34 @@ result_path=${main_path}/data/AMPresult_${species}
 esm2_dict=${esm2_dict_file}
 
 
-# for machine_method in ${machine_method_1}
-# do
+for machine_method in ${machine_method_1}
+do
 
-#     for encode_method in ${encode_method_1}
-#     do
-#     kmer=1
-#     w2v_model=None
-#     size=-1
-#     epochs=-1
-#     window=-1
-#     sg=-1
-#     echo ${machine_method} ${encode_method}
-#     python ml_train_test_45.py  --intrain ${train_path} --intest ${test_csv} --outpath ${result_path} --machine ${machine_method}  --encode ${encode_method} --kfold ${kfold} --seqwin ${seqwin} --kmer ${kmer} --w2vmodel ${w2v_model} --size ${size} --epochs ${epochs} --sg ${sg} --window ${window} --esm2 ${esm2_dict} --kinds ${kinds} --prott5 ${prott5_file}
-#     done
+    for encode_method in ${encode_method_1}
+    do
+    kmer=1
+    w2v_model=None
+    size=-1
+    epochs=-1
+    window=-1
+    sg=-1
+    echo ${machine_method} ${encode_method}
+    python ml_train_test_45.py  --intrain ${train_path} --intest ${test_csv} --outpath ${result_path} --machine ${machine_method}  --encode ${encode_method} --kfold ${kfold} --seqwin ${seqwin} --kmer ${kmer} --w2vmodel ${w2v_model} --size ${size} --epochs ${epochs} --sg ${sg} --window ${window} --esm2 ${esm2_dict} --kinds ${kinds} --prott5 ${prott5_file}
+    done
 
-#     encode_method=W2V
-#     size=128
-#     epochs=100
-#     window=40
-#     sg=1
-#     for kmer in 1 2 3 #4
-#     do
-#     w2v_model=${w2v_path}/W2V_general_${kmer}_128_100_40_1.pt
-#     echo ${machine_method} ${encode_method} ${kmer}
-#     python ml_train_test_45.py  --intrain ${train_path} --intest ${test_csv} --outpath ${result_path} --machine ${machine_method}  --encode ${encode_method} --kfold ${kfold} --seqwin ${seqwin} --kmer ${kmer} --w2vmodel ${w2v_model} --size ${size} --epochs ${epochs} --sg ${sg} --window ${window} --esm2 ${esm2_dict}
-#     done
+    encode_method=W2V
+    size=128
+    epochs=100
+    window=40
+    sg=1
+    for kmer in 1 2 3 #4
+    do
+    w2v_model=${w2v_path}/W2V_general_${kmer}_128_100_40_1.pt
+    echo ${machine_method} ${encode_method} ${kmer}
+    python ml_train_test_45.py  --intrain ${train_path} --intest ${test_csv} --outpath ${result_path} --machine ${machine_method}  --encode ${encode_method} --kfold ${kfold} --seqwin ${seqwin} --kmer ${kmer} --w2vmodel ${w2v_model} --size ${size} --epochs ${epochs} --sg ${sg} --window ${window} --esm2 ${esm2_dict}
+    done
 
-# done
+done
 cd ..
 cd network
 
@@ -86,78 +86,78 @@ cd network
 for deep_method in ${machine_method_2}
 do
 
-    # for encode_method in ${encode_method_2}
-    # do
-    # echo ${deep_method}: ${encode_method}
+    for encode_method in ${encode_method_2}
+    do
+    echo ${deep_method}: ${encode_method}
 
-    # if [ $encode_method = BE ]; then
-    # kmer=1
-    # size=25
-    # epochs=-1
-    # window=-1
-    # sg=-1
-    # w2v_model=None
-    # w2v_bpe_model=None
-    # bpe_model=None
-    # esm2_dict=None
+    if [ $encode_method = BE ]; then
+    kmer=1
+    size=25
+    epochs=-1
+    window=-1
+    sg=-1
+    w2v_model=None
+    w2v_bpe_model=None
+    bpe_model=None
+    esm2_dict=None
 
-    # elif [ $encode_method = NN ]; then
-    # kmer=1
-    # size=64
-    # epochs=-1
-    # window=-1
-    # sg=-1
-    # w2v_model=None
-    # w2v_bpe_model=None
-    # bpe_model=None
-    # esm2_dict=None
+    elif [ $encode_method = NN ]; then
+    kmer=1
+    size=64
+    epochs=-1
+    window=-1
+    sg=-1
+    w2v_model=None
+    w2v_bpe_model=None
+    bpe_model=None
+    esm2_dict=None
 
-    # elif [ $encode_method = W2V_BPE ]; then 
-    # kmer=1
-    # size=64
-    # epochs=-1
-    # window=-1
-    # sg=-1
-    # w2v_bpe_model=${w2v_bpe_model_file}
-    # bpe_model=${bpe_model_file}
-    # w2v_model=None
-    # esm2_dict=None
+    elif [ $encode_method = W2V_BPE ]; then 
+    kmer=1
+    size=64
+    epochs=-1
+    window=-1
+    sg=-1
+    w2v_bpe_model=${w2v_bpe_model_file}
+    bpe_model=${bpe_model_file}
+    w2v_model=None
+    esm2_dict=None
 
-    # elif [ $encode_method = prott5 ]; then
-    #     kmer=1
-    #     size=1024
-    #     epochs=-1
-    #     window=-1
-    #     sg=-1
-    #     w2v_model=None
-    #     w2v_bpe_model=None
-    #     bpe_model=None
-    #     esm2_dict=None
-    #     prott5_file=${prott5_file}
+    elif [ $encode_method = prott5 ]; then
+        kmer=1
+        size=1024
+        epochs=-1
+        window=-1
+        sg=-1
+        w2v_model=None
+        w2v_bpe_model=None
+        bpe_model=None
+        esm2_dict=None
+        prott5_file=${prott5_file}
 
 
-    # elif [ $encode_method = ESM2 ]; then
-    #     kmer=1
-    # if [ $deep_method = TX ]; then 
-    #     size=128
-    # else
-    #     size=320
-    #     # 1280
-    # fi
-    # epochs=-1
-    # window=-1
-    # sg=-1
-    # w2v_model=None
-    # w2v_bpe_model=None
-    # bpe_model=None
-    # esm2_dict=${esm2_dict_file}
+    elif [ $encode_method = ESM2 ]; then
+        kmer=1
+    if [ $deep_method = TX ]; then 
+        size=128
+    else
+        size=320
+        # 1280
+    fi
+    epochs=-1
+    window=-1
+    sg=-1
+    w2v_model=None
+    w2v_bpe_model=None
+    bpe_model=None
+    esm2_dict=${esm2_dict_file}
 
-    # else
-    # echo no encode method in script
-    # fi
+    else
+    echo no encode method in script
+    fi
 
-    # python train_test_86.py  --intrain ${train_path} --intest ${test_csv} --outpath ${result_path} --losstype "balanced" --deeplearn ${deep_method}  --encode ${encode_method} --kfold ${kfold} --w2vmodel ${w2v_model} --seqwin ${seqwin} --kmer ${kmer} --size ${size} --epochs ${epochs} --sg ${sg} --window ${window} --w2v_bpe_model ${w2v_bpe_model} --bpe_model ${bpe_model} --esm2 ${esm2_dict} --prott5 ${prott5_file}
-    # done
+    python train_test_86.py  --intrain ${train_path} --intest ${test_csv} --outpath ${result_path} --losstype "balanced" --deeplearn ${deep_method}  --encode ${encode_method} --kfold ${kfold} --w2vmodel ${w2v_model} --seqwin ${seqwin} --kmer ${kmer} --size ${size} --epochs ${epochs} --sg ${sg} --window ${window} --w2v_bpe_model ${w2v_bpe_model} --bpe_model ${bpe_model} --esm2 ${esm2_dict} --prott5 ${prott5_file}
+    done
 
     encode_method=W2V
     for kmer in 1 2 3 #4
